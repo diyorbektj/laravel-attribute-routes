@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace Diyorbek\AttributeRoutes;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
