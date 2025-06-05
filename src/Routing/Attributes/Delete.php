@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Routing\Attributes;
+namespace Diyorbek\AttributeRoutes\Routing\Attributes;
 
 use Attribute;
 
