@@ -64,6 +64,7 @@ class PostController extends Controller
 | `#[Get(uri)]` | `GET` marshrut |
 | `#[Post(uri)]` | `POST` marshrut |
 | `#[Put(uri)]` | `PUT` marshrut |
+| `#[Parch(uri)]` | `PATCH` marshrut |
 | `#[Delete(uri)]` | `DELETE` marshrut |
 
 Har bir atributda siz quyidagi parametrlarni ko‘rsatishingiz mumkin:
@@ -98,16 +99,6 @@ Agar sizning controllerlar boshqa joyda bo‘lsa, `AttributeRouteRegistrar` ga m
 
 ---
 
-## 🚑 Troubleshooting
-
-### 1. `The route /posts could not be found`
-
-> Sabab: attributelar noto‘g‘ri ishlayotgan yoki controllerlar noto‘g‘ri joyda turgan bo‘lishi mumkin.
-
-✅ Iltimos, `web` middleware mavjudligini, attributening to‘g‘ri yozilganligini, va controllerning `app/Http/Controllers` papkada turganini tekshiring.
-
----
-
 ## 🤝 Hissa qo‘shish (Contributing)
 
 1. Fork qiling
@@ -117,13 +108,7 @@ Agar sizning controllerlar boshqa joyda bo‘lsa, `AttributeRouteRegistrar` ga m
 
 ---
 
-## 🧾 Litsenziya
-
-MIT License — bemalol ishlatishingiz mumkin.
-
----
-
 ## 📫 Muallif
 
-- Diyorbek X (Telegram: `@Diyorbek_tj`)
+- Diyorbek (Telegram: `@Diyorbek_tj`)
 - GitHub: [github.com/diyorbektj](https://github.com/diyorbektj)
