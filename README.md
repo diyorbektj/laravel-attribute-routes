@@ -1,17 +1,18 @@
+
 # Laravel Attribute Routes
 
-Laravel 9+ va PHP 8+ uchun `#[Attribute]` yordamida controller methodlariga route (yo‘nalish) belgilash imkonini beruvchi paket. Oddiy `routes/web.php` fayliga yozish o‘rniga, controllerning ichida route e'lon qilinadi.
+Пакет, позволяющий задавать маршруты (`routes`) прямо внутри методов контроллера с помощью `#[Attribute]` для Laravel 9+ и PHP 8+. Вместо объявления маршрутов в `routes/web.php`, вы можете указывать их напрямую в контроллерах.
 
 ---
 
-## 🔧 O'rnatish (Installation)
+## 🔧 Установка
 
-1. Composer orqali o‘rnating:
+1. Установите через Composer:
 ```bash
 composer require diyorbek/laravel-attribute-routes
 ```
 
-2. Laravel avtomatik ravishda `AttributeRouteServiceProvider`ni yuklaydi. Agar kerak bo‘lsa, `config/app.php` fayliga qo‘lda qo‘shishingiz mumkin:
+2. Laravel автоматически загрузит `AttributeRouteServiceProvider`. Если потребуется — можно добавить его вручную в `config/app.php`:
 ```php
 'providers' => [
     ...
@@ -21,15 +22,15 @@ composer require diyorbek/laravel-attribute-routes
 
 ---
 
-## 📦 Qanday ishlaydi?
+## 📦 Как это работает?
 
-Controller methodlariga quyidagi kabi atributlar (`#[Get]`, `#[Post]` va h.k.) orqali marshrutlar belgilanadi. Bu atributlar avtomatik tarzda aniqlanadi va Laravel routing tizimiga ro‘yxatdan o‘tadi.
+Маршруты задаются с помощью атрибутов вроде `#[Get]`, `#[Post]` и т.д. Эти атрибуты автоматически распознаются и регистрируются в системе маршрутизации Laravel.
 
 ---
 
-## 🧪 Foydalanish (Usage)
+## 🧪 Пример использования
 
-### 1. `Http\Controllers\PostController.php` misoli:
+### 1. Пример контроллера `Http\Controllers\PostController.php`:
 
 ```php
 <?php
@@ -50,40 +51,40 @@ class PostController extends Controller
     #[Post('/posts', name: 'posts.store', middleware: ['web'])]
     public function store()
     {
-        // Ma'lumotlarni saqlash
+        // Сохранение данных
     }
 }
 ```
 
 ---
 
-## ✍️ Mavjud atributlar (Available Attributes)
+## ✍️ Доступные атрибуты
 
-| Atribut | Tavsifi |
-|--------|---------|
-| `#[Get(uri)]` | `GET` marshrut |
-| `#[Post(uri)]` | `POST` marshrut |
-| `#[Put(uri)]` | `PUT` marshrut |
-| `#[Parch(uri)]` | `PATCH` marshrut |
-| `#[Delete(uri)]` | `DELETE` marshrut |
+| Атрибут | Описание |
+|--------|----------|
+| `#[Get(uri)]` | Маршрут с методом `GET` |
+| `#[Post(uri)]` | Маршрут с методом `POST` |
+| `#[Put(uri)]` | Маршрут с методом `PUT` |
+| `#[Parch(uri)]` | Маршрут с методом `PATCH` |
+| `#[Delete(uri)]` | Маршрут с методом `DELETE` |
 
-Har bir atributda siz quyidagi parametrlarni ko‘rsatishingiz mumkin:
+Каждый атрибут может содержать следующие параметры:
 
 ```php
 #[Get('/url', name: 'route.name', middleware: ['web', 'auth'])]
 ```
 
-| Parametr | Tavsifi |
-|----------|---------|
-| `uri` | Yo‘nalish manzili (required) |
-| `name` | Route nomi (optional) |
-| `middleware` | Middlewarelar ro‘yxati (optional) |
+| Параметр | Описание |
+|----------|----------|
+| `uri` | Адрес маршрута (обязательный) |
+| `name` | Имя маршрута (необязательный) |
+| `middleware` | Список middleware (необязательный) |
 
 ---
 
-## ⚙️ Qo‘shimcha sozlamalar (Configuration)
+## ⚙️ Дополнительные настройки
 
-Agar sizning controllerlar boshqa joyda bo‘lsa, `AttributeRouteRegistrar` ga maxsus papkani uzatishingiz mumkin:
+Если ваши контроллеры находятся в другой директории, вы можете указать путь вручную в `AttributeRouteRegistrar`:
 
 ```php
 (new \Diyorbek\AttributeRoutes\AttributeRouteRegistrar())->registerRoutes(app_path('Custom/Controllers'));
@@ -91,24 +92,24 @@ Agar sizning controllerlar boshqa joyda bo‘lsa, `AttributeRouteRegistrar` ga m
 
 ---
 
-## ❗ Eslatma
+## ❗ Примечания
 
-- Bu paket faqat **PHP 8.0 yoki undan yuqori** va **Laravel 9+** da ishlaydi.
-- Faqat `public` methodlar qabul qilinadi.
-- `routes/web.php` ichida marshrut qo‘shish shart emas. Lekin faqat `web` middleware bilan ishlayotgan bo‘lsa, middleware parametri ko‘rsatilishi kerak.
-
----
-
-## 🤝 Hissa qo‘shish (Contributing)
-
-1. Fork qiling
-2. Yangi branch oching
-3. O‘zgartirish kiriting
-4. Pull Request yuboring
+- Пакет работает только с **PHP 8.0 или выше** и **Laravel 9+**.
+- Поддерживаются только `public` методы контроллеров.
+- Не требуется регистрировать маршруты в `routes/web.php`. Однако, если маршрут работает только через `web` middleware, обязательно указывайте его.
 
 ---
 
-## 📫 Muallif
+## 🤝 Вклад в развитие
 
-- Diyorbek (Telegram: `@Diyorbek_tj`)
+1. Сделайте fork репозитория
+2. Создайте новую ветку
+3. Внесите изменения
+4. Отправьте Pull Request
+
+---
+
+## 📫 Автор
+
+- Диёрбек (Telegram: `@Diyorbek_tj`)
 - GitHub: [github.com/diyorbektj](https://github.com/diyorbektj)
